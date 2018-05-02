@@ -75,10 +75,10 @@
 			</dd>
 			<dt>年龄</dt>
 			<dd>
-				<select>
-					<optgroup label="少年">
-						<option value="1-6岁">1-6岁</option>
-						<option value="6-12岁">6-12岁</option>
+				<select name="select">
+					<optgroup label="少年" >
+						<option value="1-6岁" disabled>1-6岁</option>
+						<option value="6-12岁" >6-12岁</option>
 					</optgroup>
 					<optgroup label="青年">
 						<option value="13-24岁">13-24岁</option>
@@ -97,19 +97,19 @@
 			</dd>	
 			<dt>生辰</dt>
 			<dd>
-				<input type="time">
+				<input type="time" name="shenchen">
 			</dd>
 			<dt>照片</dt>
 			<dd>
-				<input type="file" name="">
+				<input type="file" name="picture">
 			</dd>
 			<dt>肤色</dt>
 			<dd>
-				<input type="color" name="">
+				<input type="color" name="skincolor">
 			</dd>
 			<dt>自我介绍</dt>
 			<dd>
-				<textarea cols="20" rows="10">&lt;/textarea></textarea>
+				<textarea cols="20" rows="10" name="intro">&lt;/textarea></textarea>
 			</dd>
 		
 		</dl>
