@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>block-layout-practise</title>
+	<style type="text/css">
+		header {
+			background-color: black;
+			color: white;
+			padding-left: calc(50% - 300px);
+
+		}
+		main {
+			width: 600px;
+			margin: auto;
+			margin-top: 1em;
+		}
+		ul:first-of-type li {
+			border: 3px solid;
+			background-color: pink;
+			width: 174px;
+			height: 34px;
+			margin-bottom: 15px;
+			list-style: none;
+			xpadding-left: 0 !important;
+			xbox-sizing: border-box;
+
+			xvertical-align: middle;
+		}
+		ul {
+			padding-left: 0;
+		}
+		ul:first-of-type li:hover {
+			background-color: red;
+		}
+		ul:first-of-type li:nth-child(n+5) {
+			margin-left: 210px;
+			xmargin-top: -220px;
+		}
+		ul:first-of-type li:nth-child(4n+5) {
+			margin-top: -220px;
+		}
+		ul:first-of-type li:nth-child(n+9) {
+			margin-left: 420px;
+		}
+		ul:last-of-type li {
+			list-style: none;
+			border-bottom: 1px dotted;
+			margin-bottom: -1px;
+		}
+		ul:last-of-type {
+			overflow: hidden;
+		}
+		footer {
+			background-color: violet;
+			xmargin: auto;
+		}
+		footer div {
+			margin: auto;
+			width: 600px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		hello world 请调整浏览器窗口大小查看效果
+	</header>
+	<main>
+		<div>
+			页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px
+		</div>
+		<ul class="listone">
+			<li>宽180高40(包含边框)</li>
+			<li>水平间隙30px</li>
+			<li>垂直间隙15px</li>
+			<li>边框宽度3px</li>
+			<li>产品</li>
+			<li>产品</li>
+			<li>产品</li>
+			<li>产品</li>
+			<li>产品</li>
+			<li>产品</li>
+			<li>产品</li>
+			<li>产品</li>
+		</ul>
+		<ul>
+			<li>link</li>
+			<li>link</li>
+			<li>link</li>
+			<li>link</li>
+			<li>link</li>
+		</ul>				
+	</main>
+	<footer>
+		<div>&copy;版权所有<br>本页所有布局均使用块元素</div>
+	</footer>
+</body>
+</html>
