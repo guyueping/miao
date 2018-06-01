@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>slide</title>
+  <style type="text/css">
+        * {
+      background-color: rgb(0,0,0,0.1);
+    }
+    div {
+      position: relative;
+      border: 1px solid red;
+      xdisplay: flow-root;
+      overflow: hidden;
+      height: 200px;
+      width: 300px;
+    }
+    img {
+      height: 200px;
+      width: 300px;
+      position: absolute;
+      left: 100%;
+      transition: left 1s;
+      xtop: 20px;
+    }
+    /* 选中 id的值为当前url的#后面的部分 的元素 */
+    input:checked + * + * + img {
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+   <div>
+     <input type="radio" class="" name="slide">
+     <input type="radio" name="slide">
+     <input type="radio" name="slide">
+    <img src="http://img.tupianzj.com/uploads/allimg/20170814/ndyl20171505-1-l.jpg" alt="" id="s1">
+    <img src="http://img.tupianzj.com/uploads/allimg/170106/9-1F106115924.jpg" alt="" id="s2">
+    <img src="http://img.tupianzj.com/uploads/allimg/160518/9-16051Q51I1I3.JPG" alt="" id="s3">
+  </div>
+</body>
+</html>

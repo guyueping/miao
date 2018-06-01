@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style type="text/css">
+    * {
+  background-color: rgb(0,0,0,0.1);
+}
+table {
+  border-collapse: collapse;
+  xmargin-bottom: 20px;
+}
+.origin td {
+  width: 40px;
+  height: 40px;
+  xborder: 3px solid green;
+}
+.origin tr {
+  border: 3px solid green;
+}
+.origin col {
+  border: 3px solid green;
+}
+.origin td:hover {
+  border: 3px solid red;
+}
+
+ul.a {
+  padding: 0;
+  margin-top: 20px;
+  xmargin-left: 3px;
+  xmargin-top: 3px;
+  padding-top: 3px;
+  padding-left: 3px;
+  list-style: none;
+  font-size: 0;
+  xoverflow: hidden;
+  
+  width: 132px;;
+}
+.a li {
+  font-size: 16px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  border: 3px solid black;
+  margin-left: -3px;
+  xfloat: left;
+  margin-top: -3px;
+  position: relative;
+}
+.a li:hover {
+  border-color: red;
+  z-index: 100;
+}
+
+.ie {
+  padding: 0;
+  xlist-style: none;
+}
+ul.ie {
+  width: 132px;
+  overflow: hidden;
+  padding-top: 3px;
+  padding-left:3px;
+}
+a {
+  float: left;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 3px solid black;
+  margin-left: -3px;
+  margin-top: -3px;
+  position: relative; 
+}
+.ie li {
+  display:inline;
+}
+a:hover {
+  border-color: red;
+  z-index: 100;
+  
+}
+
+
+
+  </style>
+</head>
+<body>
+  <table class="origin">
+   <col>
+    <col>
+    <col>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  <ul class="a">
+    <li>01</li>
+    <li>02</li>
+    <li>03</li>
+    <li>04</li>
+    <li>05</li>
+    <li>06</li>
+    <li>07</li>
+    <li>08</li>
+    <li>09</li>
+  </ul>
+  <hr>
+  <ul class="ie">
+    <li><a href="">1</a></li>
+    <li><a href="">2</a></li>
+    <li><a href="">3</a></li>
+    <li><a href="">4</a></li>
+    <li><a href="">5</a></li>
+    <li><a href="">6</a></li>
+    <li><a href="">7</a></li>
+    <li><a href="">8</a></li>
+    <li><a href="">9</a></li>
+  </ul>
+</body>
+</html>
