@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>图片旋转</title>
+  <style type="text/css">
+	  	* {
+	  background-color: rgb(0,0,0,0.1);
+	}
+	div {
+	  width: 50px;
+	  height: 50px;
+	  background-image: linear-gradient(pink, green);
+	  animation: a 2s cubic-bezier(.4,0,.6,1) infinite alternate,
+	    b 2s -1s cubic-bezier(.4,0,.6,1) infinite alternate;
+	}
+	@keyframes a {
+	  from {
+	    margin-left: 0;
+	  }
+	  to {
+	    margin-left: 200px;
+	  }
+	}
+	@keyframes b {
+	  from {
+	    margin-top: 0;
+	    
+	  }
+	  to {
+	    margin-top: 200px;
+	  }
+	}
+  </style>
+</head>
+<body>
+  <div></div>
+</body>
+</html>

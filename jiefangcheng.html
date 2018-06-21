@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>解放方程</title>
+</head>
+<body>
+	<script type=xxx>
+		var a = Number(prompt("a:"));
+		var b = Number(prompt("b:"));
+		var c = Number(prompt("c:"));
+		var det = b*b - 4*a*c;
+		var s1 =(-b + Math.sqrt(b*b-4*a*c))/(2*a);
+		var s2 =(-b - Math.sqrt(b*b-4*a*c))/(2*a);
+		if(det>0) {
+		    console.log((-b + Math.sqrt(det))/(2*a));
+		    console.log((-b - Math.sqrt(det))/(2*a));
+		}
+		else if (det==0) {
+		  console.log((-b)/(2*a));
+		}
+		else {
+		  console.log(String((-b)/(2*a)) + "-" + String(Math.sqrt(-det)/(2*a)) + "i");
+		  console.log(String((-b)/(2*a)) + "+" + String(Math.sqrt(-det)/(2*a)) + "i");
+
+		}
+	</script>
+	<script>
+		var a = Number(prompt("a:"));
+		var b = Number(prompt("b:"));
+		var c = Number(prompt("c:"));
+		var d = Number(prompt("d:"));
+		var e = Number(prompt("e:"));
+		var f = Number(prompt("f:"));
+		if((a/d)!=(b/e)) {
+		  console.log((e*c - b*f)/(a*e - d*d));
+		  console.log((d*c - a*f)/(d*b -a*e));
+		}else if ((b/e)==(c/f)) {
+		  console.log("有无穷解");
+		}
+		else 
+		  console.log("无解");
+	</script>
+</body>
+</html>

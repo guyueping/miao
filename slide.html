@@ -21,23 +21,25 @@
       width: 300px;
       position: absolute;
       left: 100%;
-      transition: left 1s;
-      xtop: 20px;
+      xtransition: left .5s;
+      top: 20px;
     }
     /* 选中 id的值为当前url的#后面的部分 的元素 */
     input:checked + * + * + img {
       left: 0;
+      transition: left .5s;
+
     }
   </style>
 </head>
 <body>
    <div>
-     <input type="radio" class="" name="slide">
+     <input type="radio" class="" name="slide" checked>
      <input type="radio" name="slide">
      <input type="radio" name="slide">
-    <img src="http://img.tupianzj.com/uploads/allimg/20170814/ndyl20171505-1-l.jpg" alt="" id="s1">
-    <img src="http://img.tupianzj.com/uploads/allimg/170106/9-1F106115924.jpg" alt="" id="s2">
-    <img src="http://img.tupianzj.com/uploads/allimg/160518/9-16051Q51I1I3.JPG" alt="" id="s3">
+    <img src="http://i1.mifile.cn/a4/xmad_15290474375598_QtKJk.jpg" alt="" id="s1">
+    <img src="http://i1.mifile.cn/a4/xmad_15277843896464_LQRDl.jpg" alt="" id="s2">
+    <img src="http://i1.mifile.cn/a4/xmad_15281008179499_nDjKA.jpg" alt="" id="s3">
   </div>
 </body>
 </html>

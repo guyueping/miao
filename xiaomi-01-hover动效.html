@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>xiaomi-hover</title>
+  <style>
+    body {
+      background-color: #eee;
+    }
+    * {
+        box-sizing: border-box;
+
+    }
+    section {
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+    img {
+      height: 160px;
+      width: 160px;
+    }
+    div {
+      xborder: 1px solid;
+      
+      height: 220px;
+      width: 220px;
+      padding: 30px;
+      background-color: #fff;
+      transition: .2s linear;
+      xbox-shadow: 2px 2px 5px 1px #888888;
+      position: relative;
+      overflow: hidden;
+    }
+    div:hover {
+      transform: translatey(-3px);
+      xbox-shadow: 5px 5px 5px ;
+      box-shadow:5px 5px 5px #ddd, -5px 5px 5px #ddd;
+
+    }
+    div:hover side {
+      bottom: 0px;
+    }
+    side {
+      position: absolute;
+      bottom: -50px;
+      xoverflow: hidden;
+      left: 0;
+      width: 220px;
+      height: 50px;
+      font-size: 14px;
+      line-height: 1em;
+      background-color: #ff6700;
+      transition: bottom .2s linear;
+      padding: 2px 10px;
+      
+    }
+    div:before {
+      content: '享8折';
+      position: absolute;
+      width: 40px;
+      height: 24px;
+      line-height: 24px;
+      font-size: 12px;
+      text-align: center;
+      top: 0;
+      left: 50%;
+      margin-left: -20px;
+      background-color: #e53935;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <div>
+    <img src="http://i1.mifile.cn/a1/pms_1527144859.25489991!220x220.jpg" alt="">
+    <side>
+      Lorem ipsum dolor sit.loLorem 
+      ipsum dolor sit amet, conse ctetur.
+    </side>
+  </div>
+  </section>
+</body>
+</html>

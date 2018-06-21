@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>three-layout-float</title>
+  <style type="text/css">
+  	
+		html, body {
+		  width: 100%;
+		  
+		}
+		aside {
+		  width: 20%;
+		  float: left;
+		  background-color: pink;
+		}
+		main {
+		  float: right;
+		  width: 30%;
+		  background-color: gray;
+		}
+		.s1 {
+		  background-color: #ccc;
+		  display: flow-root;
+		}
+		.contain  {
+		  border: 1px solid;
+		 xmargin-bottom: -386px;
+		  xoverflow: hidden;
+		  display: flow-root;
+		  position: relative;
+		}
+		.contain > *::before {
+		  content: '';
+		  width: 100%;
+		  position: absolute;
+		  bottom: 0;
+		  top: 0;
+		  background-color: inherit;
+		  z-index: -1;
+		}
+
+
+  </style>
+</head>
+<body>
+  <div class="contain">
+    <aside>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, impedit.</aside>
+    <main>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi suscipit doloremque atque aliquam distinctio? Asperiores iure expedita sint ea delectus excepturi consequatur voluptates vero doloribus deleniti. Officiis optio necessitatibus eius.</main>
+    <div class="s1">lopiciatis doloremque, velit ad a vitae libero vel facilis, asperiores accusantium. Deleniti maiores iusto at enim earum, aliquam quasi alias. Animi, harum placeat a id incidunt, quas soluta sed dolor nemo magnam dignissimos voluptas, quaerat quidem. Corporis beatae fugiat explicabo nam, harum, maiores aut, non recusandae enim perferendis quis reprehenderit dicta, autem distinctio omnis.</div>
+  </div>
+  <footer>ddll</footer>
+</body>
+</html>

@@ -3,290 +3,547 @@
 <head>
 	<title>小米商城 - 小米8、小米MIX 2S、红米5 Plus、小米电视官方网站</title>
 	<meta charset="utf-8">
-	<link rel="icon" type="image/x-icon" href="https://s01.mifile.cn/favicon.ico">
-	<style type="text/css">
-		html, body {
+	<link rel="stylesheet" type="text/less" href="style.less">
+	<!-- <style type="text/less">
+		body {
 			margin: 0;
-			min-width: 1226px;
-		}
-		.header {
-			background-image: url(https://i1.mifile.cn/a4/cms_15270400062082_IKomG.jpg);
-			width: 100%;
-			height: 120px;
-			background-position: 50%,50%; 
-		}
-		.header:hover {
-			cursor: pointer;
-		}
-		.header a {
-			display: inline-block;
-			width: 100%;
-			height: 120px;
-
-		}
-		.topbar-nav {
-			background-color: #333;
-			width: 100%;
-			height: 40px;
-			position: relative;
-		}
-		.topbar-nav a {
-			color: #b0b0b0;
-			text-decoration: none;
 			font-size: 12px;
-			line-height: 40px;	
-			padding-right: .5em;
-			padding-left: .5em;
-			border-right: 1px solid #424242;
 		}
-		.topbar-nav a:first-child {
-			padding-left: 4em;
-		}
-		.topbar-nav a:last-child {
-			border-right: none;
-		}
-		.topbar-info {
-			display: inline;
-			position: absolute;
-			right: 4em;
-
-		}
-		.topbar-info a:last-child {
-			background-image: url(https://i8.mifile.cn/b2c-mimall-media/d7db56d1d850113f016c95e289e36efa.png);
-			display: inline-block;
-			/*为什么设置了宽高就掉下来*/
-			/*height: 40px;
-			width: 40px;*/
-			xbackground-color: gray;
-			background-size: 20px 20px;
-			background-repeat: no-repeat;
-			padding-left: 2.5em;
-			xvertical-align: middle;
-			background-position: 0 10px;
-			
-		}
-		.topbar-nav a:hover {
-			color: white;
-		}
-		.topbar-info a:last-child:hover {
-			color: #ff6700;
-			background-color: white;
-			background-image: url(https://i8.mifile.cn/b2c-mimall-media/692a6c3b0a93a24f74a29c0f9d68ec71.png);
-		}
-		.site-header {
-			height: 100px;
-			xline-height: 100px;
-		}
-		.container {
-			width: 1226px;
-			height: 100px;
-			xbackground-color: gray;
-			margin: auto;
-			position: relative;
-		}
-		.container ul {
-			list-style: none;
-			padding-left: 180px;
-			display: inline-block;
-			font-size: 0;
-		}
-		.container ul li {
-			display: inline-block;
-			xbackground-color: gray;
-			color: rgb(51,51,51);
-			font-size: 16px;
-			padding-right: 1em;
-		}
-		.container ul li:nth-child(n + 11) {
-			font-size: 0;
-			right: 0;
-			position: absolute;
-			top: 25px;
-		}
-		.container::before {
-			content: "";
-			display: inline-block;
-			width: 56px;
-			height: 57px;
-			background: url(https://s01.mifile.cn/i/logo-footer.png?v2) no-repeat 0 50%;
-			padding-top: 22px;
-			padding-bottom: 22px;
-			vertical-align: middle;
-		}
-		.container .search-text {
+		* {
 			box-sizing: border-box;
-			width: 245px;
-			height: 50px;
 		}
-		.container .search-btn {
-			box-sizing: border-box;
-			width: 52px;
-			height: 50px;
-		}
-		.slide {
-			width: 1226px;
-			height: 460px;
-			margin: auto;
-			position: relative;
-			overflow: hidden;
-		} 
-		.slide img {
-			width: 1226px;
-			height: 460px;
-			position: absolute;
-			left: 100%;
-		}
-		.slide img:nth-of-type(1) {
-			left: 0;
-		}
-		.slide input {
-			position: absolute;
-			z-index: 100;
-		}
-		.slide input:nth-child(6) {
-			bottom: 20px;
-			right: 20px;
-		}
-		.slide input:nth-child(5) {
-			bottom: 20px;
-			right: 43px;
-		}
-		.slide input:nth-child(4) {
-			bottom: 20px;
-			right: 66px;
-		}
-		.slide input:nth-child(3) {
-			bottom: 20px;
-			right: 89px;
-		}
-		.slide input:nth-child(2) {
-			bottom: 20px;
-			right: 112px;
-		}
-		.slide input:nth-child(1) {
-			bottom: 20px;
-			right: 135px;
-		}
-		.slide  input:checked + * + * + * + * + * + img {
-			left: 0;
-		}
-		.category-list {
-			position: absolute;
-			z-index: 100;
+		ul, ol {
 			list-style: none;
-			background-color: rgba(0,0,0,0.6);
-			height: 460px;
+			padding: 0;
 			margin: 0;
-			padding-top: 20px;
-			padding-bottom: 20px;
-			padding-left: 0;
 		}
-		.category-list li {
-			width: 204px;
-			height: 42px;
-			color: #fff;
-			padding-left: 30px;
-		}
-		.category-list li::after {
-			content: ">";
-			position: absolute;
-			left: 190px;
-		}
-		.category-list li:hover {
-			background-color: #ff6700;
-		}
-		.exposure {
-			width: 1226px;
-			height: 170px;
-		}
-		.exposure ul {
-			width: 234px;
-			height: 170px;
-		}
-		.exposure a {
-			width: 316px;
-			height: 170px;
-		}
+		header {
+			height: 40px;
+			background-color: #333;
+			position: relative;
+			z-index: 10;
+			> div {
+				width: 1226px;
+				margin-left: auto;
+				margin-right: auto;
+				xdisplay: flex;
+				a {
+					text-decoration: none;
+					color: #b0b0b0;
+					&:hover {
+						color: white;
+					}
+				}
+				.top-links {
+					float: left;
+					span {
+						line-height: 40px;
+						.sep {
+							color: #424242;
+							margin-left: .3em;
+							margin-right: .3em;
+						}
+					}
+				}
+				.top-info {
+					float: right;
+					xmargin-left: auto;
+					display: flex;
+					.my-info {
+						position: relative;
+						width: 120px;
+						xbackground-color: pink;
+						padding-top: 12px;
+						padding-bottom: 12px;
+						text-align: center;
+						.information {
+							position: absolute;
+							height: 0;
+							overflow: hidden;
+							transition: .5s;
+							transform: translateY(15px);
+							box-shadow: 0 5px 10px #ddd;
+							ul {
+								list-style: none;
+								padding: 0;
+								width: 120px;
+								xtext-align: center;
+								line-height: 24px;
+								background-color: white;
+								li {
+									width: 60px;
+									padding-right: 30px;
+									padding-left: 30px;
+									color: #b0b0b0;
+									box-sizing: content-box;
+									&:hover {
+									color: #ff6700;
+									background-color: #f5f5f5;
+									xheight: 24px !important;
+									}
+								}
 
-	</style>
+							}
+						}
+						&:hover {
+							background-color: white;
+							span a {
+								color: #ff6700;
+							}
+							.information {
+								height: 125px;
+								color: #ff6700;
+								transform: translateY(0);
+								z-index: 5;
+								top: 45px;
+							}
+						}
+
+					}
+					.sep {
+						color: #424242;
+						margin-left: 1em;
+						margin-right: 1em;
+						padding: 12px 0 12px 0;
+
+					}
+					.shopping-cart {
+						margin-left: 2em;
+						padding: 12px 0 12px 0;
+
+					}
+					.mess, .order {
+						padding: 12px 0 12px 0;
+					}
+				}
+
+			}
+		}
+		nav {
+			height: 100px;
+			position: relative;
+			> div {
+				width: 1226px;
+				margin-right: auto;
+				margin-left: auto;
+				> a {
+					display: block;
+					height: 50px;
+					width: 50px;
+					background-image: url(https://s01.mifile.cn/i/logo-footer.png?v2);
+					background-repeat: no-repeat;
+					background-size: 50px 50px;
+					margin-top: 25px;
+					margin-bottom: 25px;
+					float: left; 
+				}
+				.nav-category {
+					float: left;
+					margin-left: 180px;
+					> ul {
+						xdisplay: inline-block;
+						float: left; 
+						&:hover > li > .children-list{
+							height: 230px;
+							border-top: 1px solid #e0e0e0;
+						}
+						> li {
+							display: inline-block;
+							xline-height: 100px;
+							&:hover {
+								.children-list {
+									xheight: 230px;
+									z-index: 10;
+								}
+							    a {
+								color: #ff6700;
+							    }
+							}
+							> a { 
+								text-decoration: none;
+								padding-left: 10px;
+								padding-right: 10px;
+								color: #333;
+								font-size: 16px;
+								line-height: 100px;
+								display: inline-block;
+							}
+							.children-list {
+								position: absolute;
+								width: 100%;
+								left: 0;
+								height: 0px;
+								overflow: hidden;								
+								transition: 0.5s 0.3s;
+								border-top: 1px solid rgb(255,255,255,0);
+								ul {
+									xfont-size: 0;
+									width: 1226px;
+									margin-left: auto;
+									margin-right: auto;
+									li {
+										xfont-size: 12px;
+										width: 204px;
+										xheight: 0px;
+										xoverflow: hidden;
+										xbackground-color: pink;
+										float: left;
+										img {
+											width: 160px;
+											height: 110px;
+										}
+										div {
+											xline-height: 20px;
+										}
+										p {
+											xline-height: 20px;
+										}
+									}
+								}
+							}
+							&:nth-child(1) div {
+								background-color: pink;
+							}
+							&:nth-child(2) div {
+								background-color: gray;
+							}
+						}
+					}
+				}
+				.search {
+					float: right;
+					position: relative;
+					xwidth: 296px;
+					height: 50px;
+					margin-top: 25px;
+					font-size: 14px;
+					form {
+						display: flex;
+						input {
+							outline: none;
+							width: 245px;
+							height: 50px;
+							font-size: 14px;
+							border: 1px solid #e0e0e0;
+							padding-left: 10px;
+							padding-right: 10px;
+							&:focus {
+								border: 1px solid #ff6700;
+								+ ul {
+									xdisplay: none;
+									visibility: hidden;
+									+ ul {
+										display: block;
+										border-top: none;
+										border: 1px solid #ff6700;
+										border-top: none;
+										+ button {
+											border: 1px solid #ff6700;
+											border-left: none;
+										}
+									}
+								}
+							}
+						}
+						button {
+							width: 51px;
+							height: 50px;
+							border: 1px solid #e0e0e0;
+							border-left: none;
+							background-color: white;
+							color: #757575;
+						}
+						> ul {
+							position: absolute;
+						}
+						.search-keyword {
+							right: 60px;
+							font-size: 10px;
+							> li {
+								display: inline-block;
+								background: #eee;
+								margin-top: 18px;
+								margin-left: 5px;
+								padding-left: 5px;
+								padding-right: 5px;
+								color: #757575;
+							}
+						}
+						.dropdown-keyword {
+							top: 100%;
+							left: 0;
+							width: 245px;
+							height: 150px;
+							display: none;
+							&:hover {
+								display: block;
+							}
+							> li {
+								padding-left: 15px;
+								padding-right: 15px;
+								line-height: 30px;
+								color: 333;
+								xbackground-color: #9e9e9e2e;
+								&:hover {
+									background-color: #eee;
+							
+								}
+							}
+						}
+					}
+				}
+
+			}
+		}
+	</style> -->	
 </head>
 <body>
-	<div class="header">
-		<a href="https://www.mi.com/a/h/5857.html?client_id=180100041086&masid=17409.0368" target="_blank"></a>
-	</div>
-	<div class="topbar-nav">
-		<a href="https://www.mi.com/index.html" target="_blank">小米商城</a>
-		<a href="https://www.miui.com/" target="_blank">MIUI</a>
-		<a href="https://iot.mi.com/index.html" target="_blank">loT</a>
-		<a href="https://i.mi.com/" target="_blank">云服务</a>
-		<a href="https://xiaoai.mi.com/" target="_blank">小爱开放平台</a>
-		<a href="https://jr.mi.com/index.html" target="_blank">金融</a>
-		<a href="https://youpin.mi.com/" target="_blank">有品</a>
-		<a href="https://b.mi.com/?client_id=180100031058&masid=17409.0358#/" target="_blank">政企服务</a>
-		<a href="">Select Region</a>
-		<div class="topbar-info">
-			<a href="">登录</a>
-			<a href="">注册</a>
-			<a href="">消息通知</a>
-			<a href="">购物车(0)</a>
-		</div>
-	</div>
-	<div class="site-header">
-		<div class="container">
-			<ul>
-				<li>小米手机</li>
-				<li>红米</li>
-				<li>电视</li>
-				<li>笔记本</li>
-				<li>盒子</li>
-				<li>新品</li>
-				<li>路由器</li>
-				<li>智能硬件</li>
-				<li>服务</li>
-				<li>社区</li>
-				<li><input type="text" name="" class="search-text"></li>
-				<li><input type="button" name="" class="search-btn"></li>
-			</ul>
-		</div>
-	</div>
-	<div class="slide">
-		<input type="radio" name="slide">
-		<input type="radio" name="slide">
-		<input type="radio" name="slide">
-		<input type="radio" name="slide">
-		<input type="radio" name="slide">
-		<input type="radio" name="slide">
-		<img src="http://i1.mifile.cn/a4/xmad_1527755905394_JOqKL.jpg">
-		<img src="http://i1.mifile.cn/a4/xmad_1524812978034_RMGmC.jpg">
-		<img src="http://i1.mifile.cn/a4/xmad_15274262596295_yGoBE.jpg">
-		<img src="http://i1.mifile.cn/a4/xmad_15266344889352_UKcQL.jpg">
-		<img src="http://i1.mifile.cn/a4/xmad_15277566791601_pEzCs.jpg">
-		<img src="http://i1.mifile.cn/a4/xmad_15248221330196_tvCXl.jpg">
-		<ul class="category-list">
-			<li>手机 电话卡</li>
-			<li>电视 盒子</li>
-			<li>笔记本</li>
-			<li>智能 家居</li>
-			<li>健康 家居</li>
-			<li>出行 儿童</li>
-			<li>路由器 手机配件</li>
-			<li>移动电源 插线板</li>
-			<li>耳机 音响</li>
-			<li>生活 米兔</li>
-		</ul>
-	</div>
-	<div class="exposure">
-		<ul>
-			<li><a href="http://www.mi.com/compare/">选购手机</a></li>
-			<li><a href="http://www.mi.com/compare/">企业团购</a></li>
-			<li><a href="http://www.mi.com/compare/">F码通道</a></li>
-			<li><a href="http://www.mi.com/compare/">米粉卡</a></li>
-			<li><a href="http://www.mi.com/compare/">以旧换新</a></li>
-			<li><a href="http://www.mi.com/compare/">话费充值</a></li>
-		</ul>
-		<a href="https://www.mi.com/"><img src="http://i1.mifile.cn/a4/xmad_15249081596681_Jdsgm.jpg"></a>
-		<a href="https://www.mi.com/"><img src="http://i1.mifile.cn/a4/xmad_15266408374761_nYuIB.jpg"></a>
-		<a href="https://www.mi.com/"><img src="http://i1.mifile.cn/a4/517bd60e-9acc-42ca-ae51-df9cd7a5df2d"></a>
-	</div>
+ 	<div class="container">
+ 		<header>
+ 			<div>
+ 				<div class="top-links">
+ 					<span>
+ 						<a href="#">小米商城</a>
+ 						<span class="sep">|</span>
+ 						<a href="#">MIUI</a>
+ 						<span class="sep">|</span>
+ 						<a href="#">IoT</a>
+ 						<span class="sep">|</span>
+ 						<a href="#">云服务</a>
+ 						<span class="sep">|</span>
+ 						<a href="#">金融</a>
+ 						<span class="sep">|</span>
+ 						<a href="#">有品</a>
+ 						<span class="sep">|</span>
+ 						<a href="#">小爱开放平台</a>
+ 						<span class="sep">|</span>
+ 						<a href="#">政企服务</a>
+ 						<span class="sep">|</span>
+ 						<a href="#">Select Region</a>
+					</span>
+ 				</div>
+ 				<div class="top-info">
+ 					<div class="my-info">
+ 						<span id="nicheng"><a href="#">guyueping</a></span>
+ 						<div class="information">
+ 							<ul>
+ 								<li>个人中心</li>
+ 								<li>评价晒单</li>
+ 								<li>我的喜欢</li>
+ 								<li>小米账户</li>
+ 								<li>退出登录</li>
+ 							</ul>
+ 						</div>
+ 					</div>
+ 					<span class="sep">|</span>
+ 					<div class="mess"><a href="#">消息通知</a></div>
+ 					<span class="sep">|</span>
+ 					<div class="order"><a href="#">我的订单</a></div>
+ 					<div class="shopping-cart">
+ 						<span><a href="#">购物车(0)</a></span>
+ 						<div class="cart">
+ 				
+ 						</div>
+ 					</div>
+ 				</div>
+ 			</div>
+ 		</header>
+ 		<nav>
+ 			<div>
+ 				<a href="#"></a>
+ 				<div class="nav-category">
+ 					<ul>
+ 						<li>
+ 							<a href="#">小米手机</a>
+ 							<div class="children-list">
+	 							<ul>
+	 								<li>
+	 									<a href="#"><img src="http://i1.mifile.cn/f/i/g/2015/cn-index/pc-320-220-mi8.png" alt=""></a>
+										<div><a href="#">小米</a></div>
+										<p>1222元</p>
+	 								</li>
+	 								<li>
+	 									<a href="#"><img src="http://i1.mifile.cn/f/i/g/2015/cn-index/6A320.png" alt=""></a>
+										<div><a href="#">小米8</a></div>
+										<p>1222元</p>
+	 								</li>
+	 								<li>
+	 									<a href="#"><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mix2s320-220white.png" alt=""></a>
+										<div><a href="#">小米s</a></div>
+										<p>1222元</p>
+	 								</li>
+	 								<li>
+	 									<a href="#"><img src="http://i1.mifile.cn/f/i/g/2015/cn-index/32022012085.jpg" alt=""></a>
+										<div><a href="#">小米</a></div>
+										<p>1222元</p>
+	 								</li>
+	 								<li>
+	 									<a href="#"><img src="http://i1.mifile.cn/f/i/g/2015/cn-index/32022012085.jpg" alt=""></a>
+										<div><a href="#">xiaomi</a></div>
+										<p>1222元</p>
+	 								</li>
+	 								<li>
+	 									<a href="#"><img src="http://i1.mifile.cn/f/i/g/2015/cn-index/max2_toubu.png" alt=""></a>
+										<div><a href="#">小小米</a></div>
+										<p>1222元</p>
+	 								</li>
+	 							</ul>
+ 							</div>
+ 						</li>
+ 						<li>
+ 							<a href="#">红米</a>
+ 							<div class="children-list">
+ 								<ul><li></li></ul>
+ 							</div>
+ 						</li>
+ 						<li><a href="#">电视</a></li>
+ 						<li><a href="#">笔记本</a></li>
+ 						<li><a href="#">盒子</a></li>
+ 						<li><a href="#">新品</a></li>
+ 						<li><a href="#">路由器</a></li>
+ 						<li><a href="#">智能硬件</a></li>
+ 					</ul>
+ 					<ul>
+ 						<li><a href="#">服务</a></li>
+ 						<li><a href="#">社区</a></li>
+ 					</ul>
+ 				</div>
+ 				<div class="search">
+					<form action="">
+						<input type="text">
+						<ul class="search-keyword">
+							<li>小米</li>
+							<li>618主会场</li>
+						</ul>
+						<ul class="dropdown-keyword">
+							<li><a href="#">小米</a>手环</li>
+							<li>扫地机器人</li>
+							<li>小米手机</li>
+							<li>米米8</li>
+							<li>空气净化器</li>
+						</ul>
+						<button>搜索</button>
+					</form>
+ 				</div>
+ 			</div>
+ 		</nav>
+ 		<main>
+ 			<div class="jumbotron">
+ 				<div class="slider">
+ 					<input type="radio" name="slide" checked>
+ 					<input type="radio" name="slide">
+ 					<input type="radio" name="slide">
+					<img src="http://i1.mifile.cn/a4/xmad_15290474375598_QtKJk.jpg" alt="">
+   					<img src="http://i1.mifile.cn/a4/xmad_15277843896464_LQRDl.jpg" alt="">
+    				<img src="http://i1.mifile.cn/a4/xmad_15281008179499_nDjKA.jpg" alt="">
+ 				</div>
+ 				<div class="side-category">
+ 					<ul>
+ 						<li>
+ 							<a href="#">手机 电话卡</a>
+ 							<ul>
+ 								<li>
+ 									<a href="#">Lorem.</a>
+ 								</li>
+ 								<li>
+ 									<a href="#">Dolore.</a>
+ 								</li>
+ 								<li>
+ 									<a href="#">Consequuntur.</a>
+ 								</li>
+ 								<li>
+ 									<a href="#">Dolorem.</a>
+ 								</li>
+ 								<li>
+ 									<a href="#">Debitis!</a>
+ 								</li>
+ 								<li>
+ 									<a href="#">Debitis.</a>
+ 								</li>
+ 								<li>
+ 									<a href="#">Voluptatibus?</a>
+ 								</li>
+ 								<li>
+ 									<a href="#">Velit.</a>
+ 								</li>
+ 								<li>
+ 									<a href="#">Esse.</a>
+ 								</li>
+ 								<li>
+ 									<a href="#">Odio!</a>
+ 								</li>
+ 								<li>
+ 									<a href="#">Accusamus?</a>
+ 								</li>
+ 								<li>
+ 									<a href="#">Debitis.</a>
+ 								</li>
+ 								<li>
+ 									<a href="#">Minima.</a>
+ 								</li>
+ 								<li>
+ 									<a href="#">Minus!</a>
+ 								</li>
+ 							</ul>
+ 						</li>
+ 						<li>
+ 							<a href="#">电视 盒子</a>
+ 							<ul>
+ 								<li><a href="">Lorem.</a></li>
+ 								<li><a href="">Sit?</a></li>
+ 								<li><a href="">Voluptatum.</a></li>
+ 								<li><a href="">Doloremque?</a></li>
+ 								<li><a href="">Architecto.</a></li>
+ 								<li><a href="">Sint!</a></li>
+ 								<li><a href="">A!</a></li>
+ 								<li><a href="">Asperiores.</a></li>
+ 								<li><a href="">Sit!</a></li>
+ 								<li><a href="">Sed.</a></li>
+ 								<li><a href="">Distinctio.</a></li>
+ 								<li><a href="">Voluptates?</a></li>
+ 								<li><a href="">Hic?</a></li>
+ 								<li><a href="">Pariatur.</a></li>
+ 								<li><a href="">Ratione!</a></li>
+ 								<li><a href="">Unde.</a></li>
+ 								<li><a href="">Quisquam.</a></li>
+ 								<li><a href="">Tempore?</a></li>
+ 								<li><a href="">Voluptas.</a></li>
+ 								<li><a href="">Impedit!</a></li>
+ 								<li><a href="">Quis.</a></li>
+ 								<li><a href="">Iure.</a></li>
+ 								<li><a href="">Rerum.</a></li>
+ 								<li><a href="">Consectetur?</a></li>
+ 							</ul>
+ 						</li>
+ 						<li>
+ 							<a href="#">笔记本</a>
+ 						</li>
+ 						<li>
+ 							<a href="#">智能 家电</a>
+ 						</li>
+ 						<li>
+ 							<a href="#">健康 家居</a>
+ 						</li>
+ 						<li>
+ 							<a href="#">出行 儿童</a>
+ 						</li>
+ 						<li>
+ 							<a href="#">路由器 手机配件</a>
+ 						</li>
+ 						<li>
+ 							<a href="#">移动电源 插线板</a>
+ 						</li>
+ 						<li>
+ 							<a href="#">耳机 音箱</a>
+ 						</li>
+ 						<li>
+ 							<a href="#">生活 米兔</a>
+ 						</li>
+ 					</ul>
+ 				</div>
+ 			</div>
+ 		</main>
+ 	</div>
 </body>
+<script src="less.min.js"></script>
 </html>

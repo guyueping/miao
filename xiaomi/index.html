@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>小米商城 - 小米8、小米MIX 2S、红米5 Plus、小米电视官方网站</title>
+	<meta charset="utf-8">
+	<link rel="icon" type="image/x-icon" href="https://s01.mifile.cn/favicon.ico">
+	<style type="text/css">
+		html, body {
+			margin: 0;
+			min-width: 1226px;
+		}
+		.header {
+			background-image: url(https://i1.mifile.cn/a4/cms_15270400062082_IKomG.jpg);
+			width: 100%;
+			height: 120px;
+			background-position: 50%,50%; 
+		}
+		.header:hover {
+			cursor: pointer;
+		}
+		.header a {
+			display: inline-block;
+			width: 100%;
+			height: 120px;
+
+		}
+		.topbar-nav {
+			background-color: #333;
+			width: 100%;
+			height: 40px;
+			position: relative;
+		}
+		.topbar-nav a {
+			color: #b0b0b0;
+			text-decoration: none;
+			font-size: 12px;
+			line-height: 40px;	
+			padding-right: .5em;
+			padding-left: .5em;
+			border-right: 1px solid #424242;
+		}
+		.topbar-nav a:first-child {
+			padding-left: 4em;
+		}
+		.topbar-nav a:last-child {
+			border-right: none;
+		}
+		.topbar-info {
+			display: inline;
+			position: absolute;
+			right: 4em;
+
+		}
+		.topbar-info a:last-child {
+			background-image: url(https://i8.mifile.cn/b2c-mimall-media/d7db56d1d850113f016c95e289e36efa.png);
+			display: inline-block;
+			/*为什么设置了宽高就掉下来*/
+			/*height: 40px;
+			width: 40px;*/
+			xbackground-color: gray;
+			background-size: 20px 20px;
+			background-repeat: no-repeat;
+			padding-left: 2.5em;
+			xvertical-align: middle;
+			background-position: 0 10px;
+			
+		}
+		.topbar-nav a:hover {
+			color: white;
+		}
+		.topbar-info a:last-child:hover {
+			color: #ff6700;
+			background-color: white;
+			background-image: url(https://i8.mifile.cn/b2c-mimall-media/692a6c3b0a93a24f74a29c0f9d68ec71.png);
+		}
+		.site-header {
+			height: 100px;
+			xline-height: 100px;
+		}
+		.container {
+			width: 1226px;
+			height: 100px;
+			xbackground-color: gray;
+			margin: auto;
+			position: relative;
+		}
+		.container ul {
+			list-style: none;
+			padding-left: 180px;
+			display: inline-block;
+			font-size: 0;
+		}
+		.container ul li {
+			display: inline-block;
+			xbackground-color: gray;
+			color: rgb(51,51,51);
+			font-size: 16px;
+			padding-right: 1em;
+		}
+		.container ul li:nth-child(n + 11) {
+			font-size: 0;
+			right: 0;
+			position: absolute;
+			top: 25px;
+		}
+		.container::before {
+			content: "";
+			display: inline-block;
+			width: 56px;
+			height: 57px;
+			background: url(https://s01.mifile.cn/i/logo-footer.png?v2) no-repeat 0 50%;
+			padding-top: 22px;
+			padding-bottom: 22px;
+			vertical-align: middle;
+		}
+		.container .search-text {
+			box-sizing: border-box;
+			width: 245px;
+			height: 50px;
+		}
+		.container .search-btn {
+			box-sizing: border-box;
+			width: 52px;
+			height: 50px;
+		}
+		.slide {
+			width: 1226px;
+			height: 460px;
+			margin: auto;
+			position: relative;
+			overflow: hidden;
+		} 
+		.slide img {
+			width: 1226px;
+			height: 460px;
+			position: absolute;
+			left: 100%;
+		}
+		.slide img:nth-of-type(1) {
+			left: 0;
+		}
+		.slide input {
+			position: absolute;
+			z-index: 100;
+		}
+		.slide input:nth-child(6) {
+			bottom: 20px;
+			right: 20px;
+		}
+		.slide input:nth-child(5) {
+			bottom: 20px;
+			right: 43px;
+		}
+		.slide input:nth-child(4) {
+			bottom: 20px;
+			right: 66px;
+		}
+		.slide input:nth-child(3) {
+			bottom: 20px;
+			right: 89px;
+		}
+		.slide input:nth-child(2) {
+			bottom: 20px;
+			right: 112px;
+		}
+		.slide input:nth-child(1) {
+			bottom: 20px;
+			right: 135px;
+		}
+		.slide  input:checked + * + * + * + * + * + img {
+			left: 0;
+		}
+		.category-list {
+			position: absolute;
+			z-index: 100;
+			list-style: none;
+			background-color: rgba(0,0,0,0.6);
+			height: 460px;
+			margin: 0;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			padding-left: 0;
+		}
+		.category-list li {
+			width: 204px;
+			height: 42px;
+			color: #fff;
+			padding-left: 30px;
+		}
+		.category-list li::after {
+			content: ">";
+			position: absolute;
+			left: 190px;
+		}
+		.category-list li:hover {
+			background-color: #ff6700;
+		}
+		.exposure {
+			width: 1226px;
+			height: 170px;
+			margin: auto;
+			margin-top: 15px;
+			xbackground-color: gray;
+			margin-bottom: 26px;
+		}
+		.exposure ul {
+			width: 234px;
+			height: 170px;
+			float: left;
+			list-style: none;
+			padding-left: 0;
+			background-color: gray;
+			margin: 0;
+			margin-right: 14px;
+			font-size: 0;
+		}
+		.exposure ul li {
+			display: inline-block;
+			font-size: 16px;
+		}
+		.exposure ul li a {
+			text-decoration: none;
+			width: 78px;
+			height: 85px;
+			display: inline-block;
+			float: left;
+			xbackground-image: url(icon/photo.png);
+			xbackground-size: 24px 24px;
+			xbackground-repeat: no-repeat;
+			text-align: center;
+			font-size: 10px;
+			position: relative;
+			color: rgba(255,255,255,0.7);
+		}
+		.exposure ul li a img {
+			width: 24px;
+			height: 24px;
+			position: absolute;
+			top: 20px
+		}
+		.exposure ul li a span {
+			position: absolute;
+			bottom: 20px;
+			left: 25px;
+		}
+		.exposure ul li a span:hover {
+			color: white;
+		}
+		.exposure>a {
+			width: 316px;
+			height: 170px;
+			float: left;
+			margin-right: 15px;
+			
+		}
+		.exposure>a:last-child {
+			margin-right: 0;
+			
+		}
+		.exposure img {
+			width: 316px;
+			height: 170px;
+		}
+		.flash-purchase {
+			width: 1226px;
+			height: 438px;
+			margin: auto;
+		}
+		.flash-purchase .title {
+			height: 58px;
+			xfont-size: 22px;
+			xfont-weight: 200;
+			margin-right: 14px;
+		}
+		.flash-purchase h2 {
+			font-size: 22px;
+			font-weight: 200;
+			line-height: 58px;
+			margin: 0;
+		}
+		.flash-purchase ul {
+			list-style: none;
+			padding: 0;
+		}
+		.flash-purchase ul li {
+			width: 234px;
+			height: 340px;
+			float: left;
+			background-repeat: no-repeat;
+			background-size: 160px 166px;
+			margin-right: 14px;
+		}
+		.flash-purchase ul li:nth-child(1) {
+			background-image: url(http://i1.mifile.cn/f/i/2018/mihome/flashpurchase.png);
+		}
+		.flash-purchase ul li:nth-child(2) {
+			background-image: url(https://i8.mifile.cn/v1/a1/29087f25-a8b1-b285-00fa-9e144076e2c4.jpg);
+		}
+		.flash-purchase ul li:nth-child(3) {
+			background-image: url(https://i8.mifile.cn/v1/a1/9664102d-28ef-c5c0-6f9c-e6bb1e31270a.jpg);
+		}
+		.flash-purchase ul li:nth-child(4) {
+			background-image: url(https://i8.mifile.cn/v1/a1/7f2afcae-8db2-a47d-7073-72547b07b1a8.jpg);
+		}
+		.flash-purchase ul li:nth-child(5) {
+			background-image: url(https://i8.mifile.cn/a1/pms_1522204891.32862445.jpg);
+			margin-right: 0;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="header">
+		<a href="https://www.mi.com/a/h/5857.html?client_id=180100041086&masid=17409.0368" target="_blank"></a>
+	</div>
+	<div class="topbar-nav">
+		<a href="https://www.mi.com/index.html" target="_blank">小米商城</a>
+		<a href="https://www.miui.com/" target="_blank">MIUI</a>
+		<a href="https://iot.mi.com/index.html" target="_blank">loT</a>
+		<a href="https://i.mi.com/" target="_blank">云服务</a>
+		<a href="https://xiaoai.mi.com/" target="_blank">小爱开放平台</a>
+		<a href="https://jr.mi.com/index.html" target="_blank">金融</a>
+		<a href="https://youpin.mi.com/" target="_blank">有品</a>
+		<a href="https://b.mi.com/?client_id=180100031058&masid=17409.0358#/" target="_blank">政企服务</a>
+		<a href="">Select Region</a>
+		<div class="topbar-info">
+			<a href="">登录</a>
+			<a href="">注册</a>
+			<a href="">消息通知</a>
+			<a href="">购物车(0)</a>
+		</div>
+	</div>
+	<div class="site-header">
+		<div class="container">
+			<ul>
+				<li>小米手机</li>
+				<li>红米</li>
+				<li>电视</li>
+				<li>笔记本</li>
+				<li>盒子</li>
+				<li>新品</li>
+				<li>路由器</li>
+				<li>智能硬件</li>
+				<li>服务</li>
+				<li>社区</li>
+				<li><input type="text" name="" class="search-text"></li>
+				<li><input type="button" name="" class="search-btn"></li>
+			</ul>
+		</div>
+	</div>
+	<div class="slide">
+		<input type="radio" name="slide" checked>
+		<input type="radio" name="slide">
+		<input type="radio" name="slide">
+		<input type="radio" name="slide">
+		<input type="radio" name="slide">
+		<input type="radio" name="slide">
+		<img src="http://i1.mifile.cn/a4/xmad_1527755905394_JOqKL.jpg">
+		<img src="http://i1.mifile.cn/a4/xmad_1524812978034_RMGmC.jpg">
+		<img src="http://i1.mifile.cn/a4/xmad_15274262596295_yGoBE.jpg">
+		<img src="http://i1.mifile.cn/a4/xmad_15266344889352_UKcQL.jpg">
+		<img src="http://i1.mifile.cn/a4/xmad_15277566791601_pEzCs.jpg">
+		<img src="http://i1.mifile.cn/a4/xmad_15248221330196_tvCXl.jpg">
+		<ul class="category-list">
+			<li>手机 电话卡</li>
+			<li>电视 盒子</li>
+			<li>笔记本</li>
+			<li>智能 家居</li>
+			<li>健康 家居</li>
+			<li>出行 儿童</li>
+			<li>路由器 手机配件</li>
+			<li>移动电源 插线板</li>
+			<li>耳机 音响</li>
+			<li>生活 米兔</li>
+		</ul>
+	</div>
+	<div class="exposure">
+		<ul>
+			<li><a href="http://www.mi.com/compare/"><img src="icon/photo.png"><span>选购手机</span></a></li>
+			<li><a href="http://www.mi.com/compare/"><img src="icon/photo.png"><span>企业团购</span></a></li>
+			<li><a href="http://www.mi.com/compare/"><img src="icon/photo.png"><span>F码通道</span></a></li>
+			<li><a href="http://www.mi.com/compare/"><img src="icon/photo.png"><span>米粉卡</span></a></li>
+			<li><a href="http://www.mi.com/compare/"><img src="icon/photo.png"><span>以旧换新</span></a></li>
+			<li><a href="http://www.mi.com/compare/"><img src="icon/photo.png"><span>话费充值</span></a></li>
+		</ul>
+		<a href="https://www.mi.com/"><img src="http://i1.mifile.cn/a4/xmad_15249081596681_Jdsgm.jpg"></a>
+		<a href="https://www.mi.com/"><img src="http://i1.mifile.cn/a4/xmad_15266408374761_nYuIB.jpg"></a>
+		<a href="https://www.mi.com/"><img src="http://i1.mifile.cn/a4/517bd60e-9acc-42ca-ae51-df9cd7a5df2d"></a>
+	</div>
+	<div class="flash-purchase">
+		<div class="title">
+			<h2>小米闪购</h2>
+			<div></div>
+		</div>
+		<div>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

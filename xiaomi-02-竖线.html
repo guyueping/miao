@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>竖线</title>
+  <style> 
+    * {
+  
+    }
+    div {
+
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+      width: 240px;
+      display:flex;
+      flex-wrap: wrap;
+      background-color: #5f5750;
+
+    }
+    li {
+      width: 80px;
+      height: 90px;
+      text-align: center;
+      line-height: 90px;
+      position: relative;
+    }
+    li:nth-child(1):after {
+      content: '';
+      width: 1px;
+      height: 70px;
+      background-color: #665e57;
+      top: 10px;
+      left: 100%;
+      position: absolute;
+    }
+    li:nth-child(2):after {
+      content: '';
+      width: 1px;
+      height: 70px;
+      background-color: #665e57;
+      top: 10px;
+      left: 100%;
+      position: absolute;
+    }
+    li:nth-child(4):after {
+      content: '';
+      width: 1px;
+      height: 70px;
+      background-color: #665e57;
+      top: 10px;
+      left: 100%;
+      position: absolute;
+    }
+    li:nth-child(5):after {
+      content: '';
+      width: 1px;
+      height: 70px;
+      background-color: #665e57;
+      top: 10px;
+      left: 100%;
+      position: absolute;
+    }
+    li:nth-child(1):before {
+      content: '';
+      width: 60px;
+      height: 1px;
+      position: absolute;
+      left: 10px;
+      top: 100%;
+      background-color: #665e57;
+    }
+    li:nth-child(2):before {
+      content: '';
+      width: 60px;
+      height: 1px;
+      position: absolute;
+      left: 10px;
+      top: 100%;
+      background-color: #665e57;
+    }
+    li:nth-child(3):before {
+      content: '';
+      width: 60px;
+      height: 1px;
+      position: absolute;
+      left: 10px;
+      top: 100%;
+      background-color: #665e57;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <ul>
+      <li>Lorem.</li>
+      <li>Quod!</li>
+      <li>Atque.</li>
+      <li>Atque.</li>
+      <li>Aspern?</li>
+      <li>Totam.</li>
+    </ul>
+  </div>
+</body>
+</html>
