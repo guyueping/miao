@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script>
+		var number = parseInt(Math.random()*100)
+		//console.log(number);
+		var num = Number(prompt("请输入一个数字："));
+		while (num !== number) {
+		  if (num < number){
+		    alert("小了");
+		  } else if (num > number) {
+		    alert("大了");
+		  }
+		  num = Number(prompt("请重新输入一个数字："));
+		}
+		alert("猜对了"+ num);
+
+
+
+	</script>
+</body>
+</html>

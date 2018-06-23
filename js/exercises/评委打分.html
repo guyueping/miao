@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>评委打分</title>
+</head>
+<body>
+	<script>
+		var count = 0;
+		var min, max, ave;
+		var judge = Number(prompt("请输入评委的个数："));
+		var num = Number(prompt("请打分："));
+		min = num;
+		max = num;
+		count = count + num;
+		for(i = 0; i < judge-1; i++){
+			var num = Number(prompt("请打分："));
+			if((num == min) ||(num == max)){
+				count = count + num;
+			} else if(num < min){
+				min = num;
+				count = count + num;
+			}
+			else if(num >= max){
+				max = num;
+				count = count + num;
+			}
+		}
+		ave = (count - min -max)/(judge-2);
+		alert("平均分为：" + ave);
+	</script>
+</body>
+</html>
