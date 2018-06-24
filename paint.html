@@ -12,7 +12,7 @@
   </style>
 </head>
 <body>
-  <canvas width="400" height="300"></canvas>
+  <canvas width="400" height="300"/></canvas>
 </body>
 <script>
   var cvs = document.querySelector('canvas')
@@ -68,8 +68,10 @@
         x1 = '0' + x1;
       if(y1.length == 1)
         y1 = '0' + y1;
-      var colo = "#ff" + x1 + y1;
-      dot(i, j, color =colo);
+      var col = "#ff" + x1 + y1;
+      dot(i, j, color =col);
+      //dot(i, j, color ='rgb(255,x,y)')
+
 
     }
   }

@@ -5,7 +5,24 @@
 </head>
 <body>
 	<script>
-		
+		var dividend = Number(prompt("输入被除数："))
+		var divisor = Number(prompt("输入除数："))
+		var dd = Math.abs(dividend)
+		var ds = Math.abs(divisor)
+		if (ds == 0)
+			alert("被除数不能为0")
+		else if (dd == 0)
+			alert("0可以被任何非0的数整除")
+		else {
+			while(dd >= ds){
+				dd = dd - ds;
+			}
+			if(dd == 0)
+				alert(dividend + "可以被" + divisor + "整除")
+			else
+				alert(dividend + "不能" + divisor + "整除")
+	
+		}
 	</script>
 </body>
 </html>
