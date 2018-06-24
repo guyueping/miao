@@ -503,9 +503,9 @@
         }
         console.log(fibo(k))
 	</script>
-	<script>
+	<script id="ch0105/18" type="xx">
 		var n = Number(prompt("n:"))
-		var a1 = Number(prompt("鸡尾酒实验总数："))
+		var a1 = Number(prompt ("鸡尾酒实验总数："))
 		var a2 = Number(prompt("鸡尾酒有效病例数："))
 		for (i = 0; i < n-1; i++) {
 			var b1 = Number(prompt("总数："))
@@ -518,5 +518,110 @@
 				console.log("same")
 		}
 	</script>
+	<script id="ch0105/20" type="xx">
+		var n = Number(prompt("输入起始位置：n"))
+		var k = Number(prompt("第几次k："))
+		var distance = n
+		var h = n
+		if (n == 1) {
+			h = h /2
+		}
+		else {
+			for(i = 1; i < k; i++) {
+			distance = distance + h
+			h = h / 2
+
+			}
+			h = h / 2
+		}
+		console.log(distance)
+		console.log(h)
+	</script>
+	<script id="ch0105/21" type="xx">
+		var n = Number(prompt("输入N："))
+		while (n != 1) {
+			if ( (n % 2) == 0) {
+				n = n /2
+				console.log(n +"="+ 2*n +"/"+"2")
+			}
+			else {
+				n = n*3 + 1
+				console.log(n +"="+(n-1)/3+"*3+1")
+			}
+		}
+	</script>
+	<script id="ch0105/22" type="xx">
+		var buget, monthDeposit
+		var balance = 0
+		var deposit = 0
+		var count = 0
+		for(i = 0; i < 12; i++) {
+			buget = Number(prompt("输入预算："))
+			if (buget > (300 + balance)) {
+				console.log("-" + (i+1))
+				break
+			} else {
+				balance = 300 + balance - buget
+				monthDeposit = parseInt(balance / 100) * 100
+				balance = balance % 100
+				deposit = deposit + monthDeposit
+			}
+			count++
+		}
+		if( count == 12) {
+			deposit = deposit*1.2 + balance
+			console.log(deposit)
+		}
+	</script>
+	<script id="ch0105/23" type="xx">
+		var m = Number(prompt("输入m："))
+		var n = Number(prompt("输入n："))
+		var count = 0
+		var pills
+		for (i = 0; i < n; i++) {
+			pills = Number(prompt("输入药丸的个数："))
+			if (pills > m) {
+				count++
+			} else {
+				m = m - pills
+			}
+		}
+		console.log(count)
+	</script>
+	<script id="ch0105/24" type="xx">
+		var n = Number(prompt("输入n："))
+		var count = 0
+		var	 max = 0
+		for (i = 0; i < n; i++) {
+			var ss = Number(prompt("输入收缩压："))
+			var sz = Number(prompt("输入舒张压："))
+			if ((ss <=140) && (ss >= 90) && (sz >= 60) && (sz <=90)) {
+				count++
+				if (count > max)
+					max = count
+			} else {
+				count = 0
+			}
+		}
+		console.log(count)
+	</script>
+	<script id="ch0105/25" type="xx">
+		//49，342 ，81，728
+		var count = false
+		for (i = 81; i < 342; i++) {
+			var seven = i.toString(7)
+			var nine = i.toString(9)
+
+			if((Math.floor(seven/100) == nine%10) 
+				&& parseInt(parseInt(seven%100)/10) == parseInt(parseInt(nine%100)/10) 
+				&& (seven%10 == Math.floor(nine/100))) {
+				console.log(i)
+				count = true
+			} 
+		}
+		if (!count)
+			console.log("无")
+	</script>
+	
 </body>
 </html>
