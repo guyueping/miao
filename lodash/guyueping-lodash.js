@@ -1,4 +1,4 @@
-vwindow['guyueping'] = {
+var guyueping = {
   chunk: function(array, size) {
 
   }
