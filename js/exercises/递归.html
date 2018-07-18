@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="xx">
+	var stones = [
+       [3],
+      [1,4],
+     [7,1,9],
+    [100,5,6,8],
+   [1,7,4,2,2],
+  [2,3,4,5,11,13]
+	]
+	function maxStones(x, y) {
+		if (x === stones.length -1) {
+			return stones[x][y]
+		}
+		var a = maxStones(x + 1, y)
+		var b = maxStones(x + 1, y + 1)
+		return stones[x][y] + Math.max(a, b)
+	}
+</script>
+</html>

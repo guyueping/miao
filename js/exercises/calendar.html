@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="xx">
+		var year = Number(prompt("年:"))
+	  	var month = Number(prompt("月："))
+	  	var day = 0
+	  	for (i =2000; i < year; i++) {
+	  		var ping = false
+	  		if (i%3200 == 0)
+	  			ping = true
+	  		else if ((i%100==0) && (i%400 != 0)) 
+	  			ping = true
+	  		else if (i%4 != 0)
+	  			ping = true
+	  		if (ping) {
+	  			day = day + 365
+	  		} else 
+	  			day = day + 366
+	  	}
+	  	for (j = 1; j < month; j++) {
+	  		var pin = false
+	  		if (year%3200 == 0)
+	  			pin = true
+	  		else if ((year%100==0) && (year%400 != 0)) 
+	  			pin = true
+	  		else if (year%4 != 0)
+	  			pin = true
+	  		if (pin) {
+				switch (j) {
+		  			case 2:
+		  				day = day + 28
+		  				break
+		  			case 4:
+		  			case 6:
+		  			case 9:
+		  			case 11:
+		  				day = day + 30
+		  				break
+		  			default: 
+		  				day = day + 31
+		  				break
+	  			}
+	  		} else {
+	  			switch (j) {
+		  			case 2:
+		  				day = day + 29
+		  				break
+		  			case 4:
+		  			case 6:
+		  			case 9:
+		  			case 11:
+		  				day = day + 30
+		  				break
+		  			default: 
+		  				day = day + 31
+		  				break
+	  			}
+	  		}
+	  	}
+	  	switch ((day+1) % 7) {
+	  		case 0: 
+	  			console.log('星期五')
+	  			break
+	  		case 1: 
+	  			console.log('星期六')
+	  			break
+	  		case 2:
+	  			console.log('星期日')
+	  			break
+	  		case 3:
+	  			console.log('星期一')
+	  			break
+	  		case 4:
+	  			console.log('星期二')
+	  			break
+	  		case 5:
+	  			console.log('星期三')
+	  			break
+	  		case 6:
+	  			console.log('星期四')
+	  			break
+	  		default :
+	  			break
+	  	}
+	</script>
+	<script>
+		// 公元年分除以4不可整除，为平年。
+  		//公元年分除以4可整除但除以100不可整除，为闰年。
+		// 公元年分除以100可整除但除以400不可整除，为平年。
+		// 公元年分除以400可整除但除以3200不可整除，为闰年。
+		// 公元年分除以3200可整除，为平年。
+		function isLeapYear (n) {
+			if (n % 3200 === 0)
+				return false
+			if (n % 400 === 0)
+				return true
+			if (n % 100 === 0)
+				return false
+			if (n % 4 === 0)
+				return true
+			return false
+		}
+		function daysOfMonth (year, month) {
+			var days
+			if (month === 2) {
+				if(isLeapYear(year)) {
+					days = 29
+				} else {
+					days = 28
+				}
+			} else {
+				switch (month) {
+					case 4:
+					case 6:
+					case 9:
+					case 11:
+						days = 30
+						break
+					default:
+						days = 31 
+						break
+				}
+			}
+			return days
+		}
+		function weekDay(year, month) {
+			var days = 0
+			for (var i = 1; i < year; i++) {
+				if (isLeapYear(i)) {
+					days += 366
+				} else {
+					days += 365
+				}
+			}
+			for (var j = 1; j < month; j++) {
+				days = days + daysOfMonth(year, j)
+			}	
+			console.log(days)
+			return ("星期" + ((days+1) % 7))
+		}
+		function weekDay2 (year, month) {
+			year--
+			var days = 365 * year + Math.floor(year/4) - Math.floor(year/100) + Math.floor(year/400)
+			year++
+			for(i = 1; i < month; i++) {
+				days = days + daysOfMonth(year, i)
+			}
+			console.log(days)
+			return("星期" + ((days+1) % 7))
+		}
+	</script>
+
+</body>
+</html>

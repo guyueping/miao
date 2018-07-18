@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script>
+	var maxSubArray = function(nums) {
+    var len = nums.length
+    var tmp = 0
+    var max = -Infinity
+    var negt = -Infinity
+    for (var i = 0; i < len; i++) {
+        tmp += nums[i]
+        if (nums[0] < 0) {
+           do {
+            if (nums[i] > negt) {
+                negt = nums[i]
+                i++
+            } while (nums[i] < 0)
+           }
+        } else {
+        	if (tmp < 0) {
+            tmp = 0
+	        }
+	        if (tmp > max) {
+	            max = tmp
+	        }
+        }
+        
+    }
+    return Math.max(max,negt)
+};
+</script>
+</html>

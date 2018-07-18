@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="xx">
+	function isPrime (n) {
+		if (n < 2) {
+			return false
+		}
+		if ((n === 2) || (n === 3) || (n === 5)) {
+			return true
+		}
+		if ((n%6 !== 1) && (n%6 !== 5)) {
+			return	false
+		}
+		vat temp = Math.sqrt(n)
+		for (var i = 2; i <= temp; i++) {
+			if (n%i === 0) {
+				return false
+			}
+		} 
+		return true
+	}
+</script>
+<script type="">
+	var primeList = [2,3,5,7,11,13,17,19,23]
+
+	function isPrime(n) {
+	  var sn = Math.sqrt(n)
+	  //一个数如果不能被小于等于它平方根以内的素数整除，则这个数也是素数
+	  for(var i = 0; primeList[i] <= sn; i++) {
+	    if (n % primeList[i] === 0) {
+	      return false
+	    }
+	  }
+
+	  return true
+	}
+
+	function countPrimes(n) {
+	  var count = 1
+	  for(var i = 3; i < n; i+=2) {
+	    if (isPrime(i)) {
+	      primeList.push(i)
+	      count++
+	    }
+	  }
+	  return count
+	}
+
+	function countPrimes(n) {
+	  var flags = new Array(n).fill(1)
+
+	  flags[0] = flags[1] = 0
+
+	  var sn = Math.sqrt(n)
+
+	  for(var i = 2; i <= sn; i++) {
+	    if (flags[i]) {
+	      for(var j = i * i; j < n; j += i) {
+	        flags[j] = 0
+	      }
+	    }
+	  }
+
+	  var count = 0
+
+	  for(var i = 0; i<n; i++) {
+	    if (flags[i]) {
+	      count++
+	    }
+	  }
+
+	  return count
+	}
+	var countPrimesx = function(n) {
+	  if (n < 3) {
+	    return 0
+	  }
+
+	  var f = new Array(n).fill(true)
+
+	  var count = n / 2 | 0
+	  for(var i = 3; i * i < n; i += 2) {
+	    // if (!f[i]) {
+	    //   continue
+	    // }
+
+	    for(var j = i * i; j < n; j += 2*i) {
+	      if (f[j]) {
+	        --count
+	        f[j] = false
+	      }
+	    }
+	  }
+	  
+	  return count
+	}
+</script>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="xx">
+	function range(start, end) {
+		var arr = []
+		if (!arguments[2]) {
+			for (var i = start; i <= end; i++) {
+				arr.push(i)
+			}
+			return arr
+		}
+		if (arguments[2] > 0) {
+			for (var i = start; i <= end; i=i+arguments[2]) {
+				arr.push(i)
+			}
+			return arr
+		}
+		if (arguments[2] < 0) {
+			for (var i = start; i >= end; i=i+arguments[2]) {
+				arr.push(i)
+			}
+			return arr
+		}
+	}
+	function sum(arr) {
+		var len = arr.length
+		var sum = 0
+		for (var i = 0; i < len; i++) {
+			sum += arr[i]
+		}
+		return sum
+	}
+</script>
+<script type="xx">
+	function reverseArray(arr) {
+		var new_arr
+		var len = arr.length
+		for (var i = 0; i < len; i++) {
+			new_arr.unshift(arr[i])
+		}
+		return new_arr
+	}
+	function reverseArrayInPlace(arr) {
+		var len = arr.length
+		var k = len >> 1
+		var temp
+		for (var i = 0; i < k; i++) {
+			temp = arr[i] 
+			arr[i] = arr[len-1-i]
+			arr[len-1-i] = temp
+		}
+		return arr
+	}
+</script>
+<script>
+	function arraytoList(arr) {
+		var len = arr.length
+		var list = {
+			value: arr[0],
+			rest: {}
+		}
+		for (var i = 1; i < len-1; i++)
+			 rest = {
+			value: arr[i],
+			rest: {}
+		}
+		rest = {
+			value: arr[len-1],
+			rest: null
+		}
+		return list
+	}
+</script>
+</html>
