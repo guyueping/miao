@@ -6,7 +6,7 @@ var guyueping = {
   		}
   		return res
   },
-  compat: function(arr) {
+  compact: function(arr) {
   // 	var res = []
   // 	for (var i = 0; i < arr.length; i++) {
   // 		if(arr[i]) {
@@ -54,11 +54,18 @@ var guyueping = {
 		return res
 	},
 	differenceWith: function(ary, values, comparator) {
-		return ary.filter(function(item) {
+		 return ary.filter(function(item) {
 			for (var i = 0; i < values.length; i++) {
-				return comparator(item, values[i])
+				return !comparator(item, values[i])
 			}
 		})
 	},
+	isEqual: function(value, other) {
+		var value_str = JSON.stringify(value)
+		var other_str = JSON.stringify(other)
+		if (value_str === other_str) 
+			return true
+		return false
+	}
 
 }
