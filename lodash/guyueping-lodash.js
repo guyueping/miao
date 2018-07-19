@@ -201,5 +201,23 @@ var guyueping = {
 		}
 		return res
 	},
+	after: function(n, func) {
+		var c = 0
+		return function(...args) {
+			c++
+			if (c > n) {
+				return func(...args)
+			}
+		}
+	},
+	before: function(n, func) {
+		var c = 0
+		return function(...args) {
+			c++
+			if (c < n) {
+				return func(...args)
+			}
+		}
+	},
 
 }
