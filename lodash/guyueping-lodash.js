@@ -160,5 +160,46 @@ var guyueping = {
 	 		return res
 	 	}, [])
 	 },
+	 keyBy: function(ary, iteratee = this.identity) {
+	    var res = []
+	    if (typeof iteratee === 'function') {
+	        for (var item of ary) {
+	            var tmp = {}
+	             tmp[iteratee(item)] = item
+	            res.push(tmp)
+	        }
+	    } else {
+	        ary.reduce((res, item) => {
+	            var tmp = {}
+	            tmp[item[iteratee]] = item
+	            res.push(tmp)
+	            return res
+	        }, res)
+	    }
+	    return res
+	},
+	groupBy: function(ary, iteratee = this.identity) {
+		var res = {}
+		if (typeof iteratee === 'function') {
+			for (var item of ary) {
+				if (iteratee(item) in res) {
+					res[iteratee(item)].push(item)
+				} else {
+					res[iteratee(item)] = [item]
+				}
+			}
+		} else {
+			itera = this.property(iteratee)
+			ary.reduce((res, item) => {
+				if (itera(item) in res) {
+					res[itera(item)].push(item)
+				} else {
+					res[itera(item)] = [item]
+				}
+				return res
+			}, res)
+		}
+		return res
+	},
 
 }
