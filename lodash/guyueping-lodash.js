@@ -63,9 +63,102 @@ var guyueping = {
 	isEqual: function(value, other) {
 		var value_str = JSON.stringify(value)
 		var other_str = JSON.stringify(other)
-		if (value_str === other_str) 
+		if (value_str ===  other_str) 
 			return true
 		return false
-	}
+	},
+	drop: function (ary, n=1) {
+		var len = n < ary.length ? n : ary.length
+		for (var i = 0; i < len; i++) {
+			ary.shift()
+		}
+		return ary
+	},
+	dropRight: function(ary, n=1) {
+		var len = n < ary.length ? n : ary.length
+		for (var i = 0; i < len; i++) {
+			ary.pop()
+		}
+		return ary
+	},
+	dropRightWhile: function() {
+
+	},
+	//该函数返回的函数，可以返回不同对象的propName属性
+	property: function(propName){
+		return function(obj) {
+			return obj[propName]
+		}
+	},
+	sumBy: function(ary, iteratee = guyueping.identity) {
+		var sum = 0
+		for (var tmp of ary) {
+			sum += iteratee(tmp)
+		}
+		return sum
+	},
+	sum: function(ary) {
+		return guyueping.sumBy(ary, guyueping.identity)
+	},
+	 identity: function(value) {
+	 	return value
+	 },
+	 matches: function(src) {
+	 	return function(obj) {
+	 		for (var key in src) {
+	 			if (src[key] !== obj[key]) {
+	 				return false
+	 			}
+	 		} 
+	 		return true
+	 	}
+	 },
+	 flatten: function(ary) {
+	 	// var res = []
+	 	// for (var i = 0; i < ary.length; i++) {
+	 	// 	if (Array.isArray(ary[i])) {
+	 	// 		res = [...res,...ary[i]]
+	 	// 	} else {
+	 	// 		res = [...res,ary[i]]
+	 	// 	}
+	 	// }
+	 	
+	 	return ary.reduce((res, item) => {
+	 		if (Array.isArray(item)) {
+	 			res = [...res,...item]
+	 		} else {
+	 			res = [...res,item]
+	 		}
+	 		return res
+	 	}, [])
+	 	// return [].concat(...ary)  
+	 	// return this.flattenDepth(ary)
+	 },
+	 flattenDeep: function(ary) {
+	 	return ary.reduce((res, item) => {
+	 		if (Array.isArray(item)) {
+	 			var tmp = this.flattenDeep(item)
+	 			res = [...res,...tmp]
+	 		} else {
+	 			res = [...res, item]
+	 		}
+	 		return res
+	 	}, [])
+	 	// return this.flattenDepth(ary, Infinity)
+	 },
+	 flattenDepth: function(ary, depth = 1) {
+	 	if (depth === 0) {
+	 		return ary
+	 	}
+	 	return ary.reduce((res, item) => {
+	 		if (Array.isArray(item)) {
+	 			var tmp = this.flattenDepth(item, depth-1)
+	 			res = [...res, ...tmp]
+	 		} else {
+	 			res = [...res, item]
+	 		}
+	 		return res
+	 	}, [])
+	 },
 
 }
