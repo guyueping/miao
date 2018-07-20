@@ -219,5 +219,29 @@ var guyueping = {
 			}
 		}
 	},
-
+	ary: function(func, n = func.length) {
+		return function(...args) {
+			return func (...args.slice(0,n))
+		}
+	},
+	unary: function(func) {
+		return function(...args) {
+			return func(args[0])
+		}
+	},
+	flip: function(func) {
+		return function(...args) {
+			return func(...args.reverse())
+		}
+	},
+	negate: function(func) {
+		return function(...args) {
+			return !func(...args)
+		} 
+	},
+	spread: function(func) {
+		return function(ary) {
+			return func.apply(null, ary)
+		}
+	},
 }
