@@ -81,8 +81,14 @@ var guyueping = {
 		}
 		return ary
 	},
-	dropRightWhile: function() {
-
+	dropRightWhile: function(ary, predicate = guyueping.identity) {
+		var func = guyueping.iteratee(predicate)
+		for (var i = 0; i < ary.length; i++) {
+			if (!func(ary[i])) {
+				var res = ary.slice(0,i)
+			}
+		}
+		return res
 	},
 	//该函数返回的函数，可以返回不同对象的propName属性
 	property: function(propName){
@@ -111,6 +117,15 @@ var guyueping = {
 	 			}
 	 		} 
 	 		return true
+	 	}
+	 },
+	 matchesProperty: function(path, src) {
+	 	return function (obj) {
+	 		if(obj[path] === src) {
+	 			return ture
+	 		} else {
+	 			return false
+	 		}
 	 	}
 	 },
 	 flatten: function(ary) {
@@ -242,6 +257,53 @@ var guyueping = {
 	spread: function(func) {
 		return function(ary) {
 			return func.apply(null, ary)
+		}
+	},
+	assign: function(object, ...source) {
+		for (var obj of source) {
+			for (var key in obj) {
+				if (obj.hasOwnProperty(key))
+					object[key] = obj[key]
+			}
+		}
+		return object
+	},
+	// merge: function(object, ...source) {
+	// 	for (var obj of source) {
+	// 		for (var key in obj) {
+	// 			if (obj.hasOwnProperty(key)) {
+	// 				for (var i = 0; i < obj[key].length; i++) {
+	// 					for (var oj in obj[key]) {
+	// 						object[key][i][oj] = obj[key][oj]
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// 	return object
+	// }
+	forOwn: function(object, iteratee=_.identity) {
+		for (var key in object) {
+			if(iteratee(object[key], key, object) === false) {
+				return
+			} else	{
+				if (object.hasOwnProperty(key))
+					iteratee(object[key], key, object)
+			}
+		}
+	},
+	iteratee: function(shorthand) {
+		if (typeof shorthand === 'function') {
+			return shorthand
+		}
+		if (typeof shorthand === 'string') {
+			return guyueping.property(shorthand)
+		}
+		if (Array.isArray(shorthand)) {
+			return guyueping.matchesProperty(shorthand)
+		}
+		if (typeof shorthand === 'object') {
+			return guyueping.matches(shorthand)
 		}
 	},
 }
