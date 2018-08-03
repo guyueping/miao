@@ -122,7 +122,7 @@ var guyueping = {
 	 matchesProperty: function(path, src) {
 	 	return function (obj) {
 	 		if(obj[path] === src) {
-	 			return ture
+	 			return true
 	 		} else {
 	 			return false
 	 		}
