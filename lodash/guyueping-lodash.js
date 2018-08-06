@@ -81,15 +81,31 @@ var guyueping = {
 		}
 		return ary
 	},
-	dropRightWhile: function(ary, predicate = guyueping.identity) {
-		var func = guyueping.iteratee(predicate)
-		for (var i = 0; i < ary.length; i++) {
+	dropRightWhile: function(ary, predicate = this.identity) {
+		var func = this.iteratee(predicate)
+		for (var i = ary.length - 1; i >= 0; i--) {
 			if (!func(ary[i])) {
-				var res = ary.slice(0,i)
+				var res = ary.slice(0,i+1)
+				break
 			}
 		}
 		return res
 	},
+	iteratee: function(shorthand = this.identity) {
+		if (typeof shorthand === 'function') {
+			return shorthand
+		}
+		if (typeof shorthand === 'string') {
+			return guyueping.property(shorthand)
+		}
+		if (Array.isArray(shorthand)) {
+			return guyueping.matchesProperty(shorthand)
+		}
+		if (typeof shorthand === 'object') {	
+			return guyueping.matches(shorthand)
+		}
+	},
+
 	//该函数返回的函数，可以返回不同对象的propName属性
 	property: function(propName){
 		return function(obj) {
@@ -111,7 +127,7 @@ var guyueping = {
 	 },
 	 matches: function(src) {
 	 	return function(obj) {
-	 		for (var key in src) {
+	 		for (var   key in src) {
 	 			if (src[key] !== obj[key]) {
 	 				return false
 	 			}
@@ -121,11 +137,18 @@ var guyueping = {
 	 },
 	 matchesProperty: function(path, src) {
 	 	return function (obj) {
-	 		if(obj[path] === src) {
-	 			return true
-	 		} else {
+	 		if (arguments.length === 1) {
+	 			if (obj[path[0]] === path[1])
+	 				return true
 	 			return false
+	 		} else {
+	 			if(obj[path] === src) {
+		 			return true
+		 		} else {
+		 			return false
+		 		}
 	 		}
+	 		
 	 	}
 	 },
 	 flatten: function(ary) {
@@ -193,6 +216,7 @@ var guyueping = {
 	    }
 	    return res
 	},
+
 	groupBy: function(ary, iteratee = this.identity) {
 		var res = {}
 		if (typeof iteratee === 'function') {
@@ -268,42 +292,68 @@ var guyueping = {
 		}
 		return object
 	},
-	// merge: function(object, ...source) {
-	// 	for (var obj of source) {
-	// 		for (var key in obj) {
-	// 			if (obj.hasOwnProperty(key)) {
-	// 				for (var i = 0; i < obj[key].length; i++) {
-	// 					for (var oj in obj[key]) {
-	// 						object[key][i][oj] = obj[key][oj]
-	// 					}
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	// 	return object
-	// }
-	forOwn: function(object, iteratee=_.identity) {
+	//判断是否为原始类型
+	isPrimitive: function(val) {
+		var type = typeof val
+		if (val === null) {
+			return true
+		}
+		switch (type) {
+			case 'number':
+			case 'string':
+			case 'boolean':
+			case 'undefined':
+			return true
+		}
+		return false
+	},
+	merge: function(object, ...source) {
+		for (var obj of source) {
+			for (var key in obj) {
+				if (this.isPrimitive(obj[key])) {
+					object[key] = obj[key]
+				} else {
+					//如果Object中有key属性
+					if (key in object) {
+						this.merge(object[key], obj[key])
+					} else {
+						object[key] = {}
+						this.merge(object, [key], obj[key])
+					}
+				}
+			}
+		}
+		return object
+	},
+	cloneDeep: function(values) {
+
+	},
+	//
+	forOwn: function(object, iteratee=this.identity) {
+		var hasOwn = object.prototype.hasOwnProperty
 		for (var key in object) {
 			if(iteratee(object[key], key, object) === false) {
-				return
+				return object
 			} else	{
-				if (object.hasOwnProperty(key))
+				if (hasOwn.call(object, key))
 					iteratee(object[key], key, object)
 			}
 		}
+		return object
 	},
-	iteratee: function(shorthand) {
-		if (typeof shorthand === 'function') {
-			return shorthand
+	forOwnRight: function(object, iteratee=this.identity) {
+		var keys = object.keys(object).reverse()
+		var hasOwn = object.prototype.hasOwnProperty
+		for (var key of keys) {
+			if (iteratee(object[key], key, object) === false) {
+				return object
+			} else {
+				if (hasOwn.call(object, key)) {
+					iteratee(object[key], key, object)
+				}
+			}
 		}
-		if (typeof shorthand === 'string') {
-			return guyueping.property(shorthand)
-		}
-		if (Array.isArray(shorthand)) {
-			return guyueping.matchesProperty(shorthand)
-		}
-		if (typeof shorthand === 'object') {
-			return guyueping.matches(shorthand)
-		}
+		return object
 	},
+	
 }
