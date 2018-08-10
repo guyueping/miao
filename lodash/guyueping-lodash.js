@@ -30,25 +30,20 @@ var guyueping = {
 		}
 		return res
 	},
-	differenceBy: function(array, values, iteratee) {
-		var res = []
-		if (typeof iteratee === 'function') {
-			var new_values = []
-			for (var i = 0; i < values.length; i++) {
-				new_values.push(iteratee(values[i]))
-			}
-			for (var i = 0; i < array.length; i++) {
-				if (new_values.indexOf(iteratee(array[i])) === -1)
-					res.push(array[i])
-			}
+	differenceBy: function(array, ...values) {
+		if (Array.isArray(values[values.length-1])) {
+			var itera = this.identity
 		} else {
-			var new_values = []
-			for (var tmp of values) {
-				new_values.push(tmp[iteratee])
-			}
-			for (var tmp of array) {
-				if (new_values.indexOf(tmp[iteratee]) === -1)
-					res.push(tmp)
+			var itera = values[values.length - 1]
+			itera = this.iteratee(itera)
+			values.pop()
+		}
+		var ary1 = [].concat(...values).map(itera)
+		var ary2 = array.map(itera)
+		var res = []
+		for (var i = 0; i < ary2.length; i++) {
+			if (ary1.indexOf(ary2[i]) === -1) {
+				res.push(array[i])
 			}
 		}
 		return res
