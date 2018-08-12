@@ -86,6 +86,16 @@ var guyueping = {
 		}
 		return res
 	},
+	dropWhile: function(ary, predicate = this.identity) {
+		var func = this.iteratee(predicate)
+		for (var i = 0; i < this.length; i++) {
+			if (!func(ary[i])) {
+				var res = ary.slice(i)
+				break
+			}
+		}
+		return res
+	},
 	iteratee: function(shorthand = this.identity) {
 		if (typeof shorthand === 'function') {
 			return shorthand
@@ -130,14 +140,14 @@ var guyueping = {
 	 		return true
 	 	}
 	 },
-	 matchesProperty: function(path, src) {
+	 matchesProperty: function(path, srcValue) {
 	 	return function (obj) {
 	 		if (arguments.length === 1) {
 	 			if (obj[path[0]] === path[1])
 	 				return true
 	 			return false
 	 		} else {
-	 			if(obj[path] === src) {
+	 			if(obj[path] === srcValue) {
 		 			return true
 		 		} else {
 		 			return false
@@ -192,6 +202,9 @@ var guyueping = {
 	 		}
 	 		return res
 	 	}, [])
+	 },
+	 flatten: function(ary) {
+	 	return [].concat(...ary)
 	 },
 	 keyBy: function(ary, iteratee = this.identity) {
 	    var res = []
@@ -350,5 +363,48 @@ var guyueping = {
 		}
 		return object
 	},
-	
+	fill: function(ary, value, start = 0, end = ary.length) {
+		for (var i = start; i < end; i++) {
+			ary[i] = value
+		}
+		return ary
+	},
+	findIndex: function(ary, predicate = this.identity, fromIndex = 0) {
+		var func = this.iteratee(predicate) 
+		for (var i = fromIndex; i < ary.length; i++) {
+			if (func(ary[i])) {
+				return i
+			}
+		}
+		return -1
+	},
+	findLastIndex: function(ary, predicate = this.identity, fromIndex = ary.length-1) {
+		var func = this.iteratee(predicate)
+		for (var i = fromIndex; i >= 0; i--) {
+			if (func(ary[i])) {
+				return i
+			}
+		}
+		return -1
+	},
+	fromParirs: function(pairs) {
+		var res = {}
+		for (var value of pairs) {
+			res[value[0]] = value[1]
+		}
+		return res
+	},
+	toPairs: function(obj) {
+		var res = []
+		for (var key in obj) {
+			if (obj.hasOwnProperty(key)) {
+				var tmp = [key, obj[key]]
+				res.push(tmp)
+			}
+		}
+		return res
+	},
+	head: function(ary) {
+		return ary[0]
+	},
 }
