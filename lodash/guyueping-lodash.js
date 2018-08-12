@@ -88,7 +88,7 @@ var guyueping = {
 	},
 	dropWhile: function(ary, predicate = this.identity) {
 		var func = this.iteratee(predicate)
-		for (var i = 0; i < this.length; i++) {
+		for (var i = 0; i < ary.length; i++) {
 			if (!func(ary[i])) {
 				var res = ary.slice(i)
 				break
