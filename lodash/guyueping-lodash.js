@@ -407,4 +407,47 @@ var guyueping = {
 	head: function(ary) {
 		return ary[0]
 	},
+	indexOf: function(ary, value, fromIndex = 0) {
+		if (fromIndex < 0) {
+			fromIndex = fromIndex + ary.length
+		}
+		for (var i = fromIndex; i < ary.length; i++) {
+			if (ary[i] === value) return i
+		}
+		return -1
+	},
+	initial: function(ary) {
+		return ary.slice(0,ary.length-1)
+	},
+	intersection: function(...arys) {
+		return this.intersectionBy(...arys)
+	},
+	intersectionBy: function(...arys) {
+		if (Array.isArray(arys[arys.length-1])) {
+			itera = this.identity
+		} else {
+			itera = this.iteratee(arys[arys.length-1])
+			arys.pop()
+		}
+		var res = arys[0]
+		for (var i = 1; i < arys.length; i++) {
+			res = res.filter(item => arys[i].map(itera).includes(itera(item)))
+		}
+		return res
+	},
+	intersectionWith: function(...values) {
+		var comparator = values[values.length-1]
+		var res = values[0]
+		for (var i = 1; i < values.length-1; i++) {
+			res = res.filter(item => {
+				for (var j = 0; j < values[i].length; j++) {
+					if (comparator(item,values[j])) {
+						return true
+					}
+				}
+				return false
+			})
+		}
+		return res
+	},
 }
