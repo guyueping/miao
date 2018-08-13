@@ -387,7 +387,7 @@ var guyueping = {
 		}
 		return -1
 	},
-	fromParirs: function(pairs) {
+	fromPairs: function(pairs) {
 		var res = {}
 		for (var value of pairs) {
 			res[value[0]] = value[1]
@@ -437,6 +437,7 @@ var guyueping = {
 	},
 	intersectionWith: function(...values) {
 		var comparator = values[values.length-1]
+		comparator = this.iteratee(comparator)
 		var res = values[0]
 		for (var i = 1; i < values.length-1; i++) {
 			res = res.filter(item => {
@@ -449,5 +450,172 @@ var guyueping = {
 			})
 		}
 		return res
+	},
+	join: function(ary, separator = ',') {
+		return ary.join(separator)
+	},
+	last: function(ary) {
+		return ary[ary.length - 1]
+	},
+	lastIndexOf: function(ary, value, fromIndex = ary.length-1) {
+		return ary.lastIndexOf(value, fromIndex)
+	},
+	nth: function(ary, n = 0) {
+		if (n < 0) {
+			n = ary.length + n
+		}
+		return ary[n]
+	},
+	pull: function(ary, ...values) {
+		for (var i = 0; ; ) {}
+	},
+	pullAll: function(ary, ) {
+
+	},
+	parseJson: function() {
+		var i
+		var str
+		return	function parse(input) {
+			str = input
+			i = 0
+			return parseValue()
+		} 
+		
+		function parseValue() {
+			var c = str[i]
+			if (c === '{') {
+				return parseObject()
+			} else if (c === '[') {
+				return parseArray()
+			} else if (c === '"') {
+				return parseString()
+			} else if (c === 't') {
+				return parseTrue()
+			} else if (c === 'f') {
+				return parseFalse()
+			} else if (c === 'n') {
+				return parseNull()
+			} else {
+				return parseNumber()
+			}
+		}
+		
+		function parseString() {
+			i++
+			var j = i
+			while (str[i] !== '"') {
+				i++
+			}
+			var result = str.slice(j,i)
+			i++
+			console.log('xxx')
+			return result
+		}
+		function parseTrue() {
+			var token = str.slice(i,i+4)
+			if (token === 'true') {
+				i = i + 4
+				return token
+			} else {
+				throw new SyntaxError('unexpected token at position ' + i)
+			}
+		}
+		function parseFalse() {
+			var token = str.slice(i,i+5)
+			if (token === 'false') {
+				i = i + 5
+				return token
+			} else {
+				throw new SyntaxError('unexpected token at position ' + i)
+			}
+		}
+		function parseNull() {
+			var token = str.slice(i,i+4)
+			if (token === 'null') {
+				i = i + 4
+				return token
+			} else {
+				throw new SyntaxError('unexpected token at position ' + i)
+			}
+		}
+		function parseArray() {
+			i++
+			if (str[i] === ']') {
+				return []
+			}
+			var result = []
+			var val 
+			for (;;) {
+				val = parseValue()
+				result.push(val)
+				if (str[i] === ',') {
+					i++
+					continue
+				} else if (str[i] === ']') {
+					i++
+					return result
+				}
+			}
+		}
+		function parseObject() {
+			i++
+			if (str[i] === '}') {
+				return {}
+			}
+			var result = {}
+			while (true) {
+				var key = parseString()
+				i++
+				var value = parseValue()
+				result[key] = value
+				if (str[i] === ',') {
+					i++
+					continue
+				} else if (str[i] === '}') {
+					i++
+					return result
+				}
+			}
+		}
+		function isNumberChar(c) {
+			if (c >= '0' && c <= '9') {
+				return true
+			}
+			if (c === '.' || c === '+' || c === '-' || c === 'e' || c === 'E') {
+				return true
+			}
+			return false
+		}
+		function parseNumber() {
+			var j = i
+			while (isNumberChar(str[j])) {
+				j++
+			}
+			var numString = str.slice(i, j)
+			i = j
+			return parseFloat(numString)
+		}
+	}(),
+	stringifyJson: function(val) {
+		if (Array.isArray(val)) {
+			return '[' + val.map(this.stringifyJson).join() + ']'
+		} else if (typeof val === 'object') {
+			var result = '{'
+			for (var k in val) {
+				result += `"${k}"` + ':' + this.stringifyJson(val[k]) + ','
+			}
+			result = result.slice(0, -1) + '}'
+			return result
+		} else if (typeof val === 'boolean') {
+			if (val) {
+				return 'true'
+			} else {
+				return 'false'
+			}
+		} else if (typeof val === 'number') {
+			return val.toString()
+		} else if (val === 'null') {
+			return 'null'
+		}
 	},
 }
