@@ -467,10 +467,186 @@ var guyueping = {
 		return ary[n]
 	},
 	pull: function(ary, ...values) {
-		for (var i = 0; ; ) {}
+		for (var i = 0; i< values.length; i ++ ) {
+			for (var j = 0; j < ary.length; j++) {
+				if (ary[j] === values[i]) {
+					for (var k = j+1; k < ary.length; k++) {
+						ary[k-1] = ary[k]
+					}
+					ary.pop()
+					j--
+				}
+			}
+		}
+		return ary
 	},
-	pullAll: function(ary, ) {
-
+	pullAll: function(ary, values) {
+		for (var i = 0; i< values.length; i ++ ) {
+			for (var j = 0; j < ary.length; j++) {
+				if (ary[j] === values[i]) {
+					for (var k = j+1; k < ary.length; k++) {
+						ary[k-1] = ary[k]
+					}
+					ary.pop()
+					j--
+				}
+			}
+		}
+		return ary
+	},
+	pullAllBy: function(ary, values, iteratee = this.identity) {
+		var func = this.iteratee(iteratee)
+		for (var i = 0; i< values.length; i ++ ) {
+			for (var j = 0; j < ary.length; j++) {
+				if (func(ary[j]) === func(values[i])) {
+					for (var k = j+1; k < ary.length; k++) {
+						ary[k-1] = ary[k]
+					}
+					ary.pop()
+					j--
+				}
+			}
+		}
+		return ary
+	},
+	pullAllWith: function(ary, values, comparator) {
+		for (var i = 0; i< values.length; i ++ ) {
+			for (var j = 0; j < ary.length; j++) {
+				if (comparator(values[i], ary[j])) {
+					for (var k = j+1; k < ary.length; k++) {
+						ary[k-1] = ary[k]
+					}
+					ary.pop()
+					j--
+				}
+			}
+		}
+		return ary
+	},
+	reverse: function(ary) {
+		return ary.reverse()
+	},
+	sortedIndex: function(ary, value) {
+		var low = 0, high = ary.length-1
+		var mid 
+		while (low <= high) {
+			mid = (low + high) / 2 | 0
+			if (ary[mid] === value) {
+				return mid
+			} else if (ary[mid] < value) {
+				low = low + 1
+			} else {
+				high = high - 1
+			}
+		}
+		if (ary[mid] > value) {
+			return mid
+		} else {
+			return mid + 1
+		}
+	},
+	sortedIndexBy: function(ary, value, iteratee = this.identity) {
+		var low = 0, high = ary.length-1
+		var mid 
+		var func = this.iteratee(iteratee)
+		while (low <= high) {
+			mid = (low + high) / 2 | 0
+			if (func(ary[mid]) === func(value)) {
+				return mid
+			} else if (func(ary[mid]) < func(value)) {
+				low = low + 1
+			} else {
+				high = high - 1
+			}
+		}
+		if (func(ary[mid]) > func(value)) {
+			return mid
+		} else {
+			return mid + 1
+		}
+	},
+	sortedIndexOf: function(ary, value) {
+		var low = 0, high = ary.length-1
+		var mid 
+		while (low <= high) {
+			mid = (low + high) / 2 | 0
+			if (ary[mid] === value) {
+				break
+			} else if (ary[mid] < value) {
+				low = low + 1
+			} else {
+				high = high - 1
+			}
+		}
+		do {
+			mid--
+		} while(ary[mid] === value)
+		return ++mid
+	},
+	sortedLastIndex: function(ary,value) {
+		var low = 0, high = ary.length-1
+		var mid 
+		while (low <= high) {
+			mid = (low + high) / 2 | 0
+			if (ary[mid] === value) {
+				 break
+			} else if (ary[mid] < value) {
+				low = low + 1
+			} else {
+				high = high - 1
+			}
+		}
+		if (ary[mid] > value) {
+			return mid
+		} else if (ary[mid] < value) {
+			return mid + 1
+		}
+		do {
+			mid++
+		} while (ary[mid] === value)
+		return mid
+	},
+	sortedLastIndexBy: function(ary, value, iteratee = this.identity) {
+		var func = this.iteratee(iteratee)
+		var low = 0, high = ary.length-1
+		var mid 
+		while (low <= high) {
+			mid = (low + high) / 2 | 0
+			if (func(ary[mid]) === func(value)) {
+				 break
+			} else if (func(ary[mid]) < func(value)) {
+				low = low + 1
+			} else {
+				high = high - 1
+			}
+		}
+		if (func(ary[mid]) > func(value)) {
+			return mid
+		} else if (func(ary[mid]) < func(value)) {
+			return mid + 1
+		}
+		do {
+			mid++
+		} while (func(ary[mid]) === func(value))
+		return mid
+	},
+	sortedLastIndexOf: function(ary, value) {
+		var low = 0, high = ary.length-1
+		var mid 
+		while (low <= high) {
+			mid = (low + high) / 2 | 0
+			if (ary[mid] === value) {
+				 break
+			} else if (ary[mid] < value) {
+				low = low + 1
+			} else {
+				high = high - 1
+			}
+		}
+		do {
+			mid++
+		} while (ary[mid] === value)
+		return --mid
 	},
 	parseJson: function() {
 		var i
@@ -618,4 +794,81 @@ var guyueping = {
 			return 'null'
 		}
 	},
+	sortedUniq: function(ary) {
+		return Array.from(new Set(ary))
+	},
+	sortedUniqBy: function(ary, iteratee = this.identity) {
+		var func = this.iteratee(iteratee)
+		for (var i = 0; i < ary.length-1; i++) {
+			if (func(ary[i]) === func(ary[i+1])) {
+				for (var j = i+1; j < ary.length-1; j++ ) {
+					ary[j] = ary[j+1]
+				}
+				ary.pop()
+				i--
+			}
+		}
+		return ary
+	},
+	tail: function(ary) {
+		return ary.slice(1)
+	},
+	take: function(ary, n = 1) {
+		return ary.slice(0,n)
+	},
+	takeRight: function(ary, n = 1) {
+		if (n > ary.length-1)  n = ary.length
+		return ary.slice(ary.length-n)
+	},
+	takeRightWhile: function(ary, predicate = this.identity) {
+		var func = this.iteratee(predicate)
+		var i = ary.length - 1
+		while (func(ary[i])) {
+			i--
+		}
+		return ary.slice(++i)
+	},
+	takeWhile: function (ary, predicate = this.identity) {
+		var func = this.iteratee(predicate)
+		var i = 0
+		while (func(ary[i])) {
+			i++
+		}
+		return ary.slice(0, i)
+	},
+	union: function(...arys) {
+		return Array.from(new Set([].concat(...arys)))
+	},
+	unionBy: function(...arys) {
+		if (Array.isArray(arys[arys.length-1])) {
+			var func = this.identity
+		} else {
+			func = this.iteratee(arys[arys.length-1])
+			arys.pop()
+		}
+		var res = []
+		var new_ary = [].concat(...arys)
+		for (var item of new_ary) {
+			if (!res.map(func).includes(func(item))) {
+				res.push(item)
+			}
+		}
+		return res
+	},
+	unionWith: function(...arys) {
+		var comparator = this.iteratee(arys[arys.length - 1])
+		arys.pop()
+		var ary1 = arys[0]
+		arys.shift()
+		var new_ary = [].concat(...arys)
+		for (var item of new_ary) {
+			if (!ary1.some(it => {
+				return comparator(it, item)
+			})) {
+				ary1.push(item)
+			}
+		}
+		return ary1
+	},
+
 }
